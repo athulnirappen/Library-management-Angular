@@ -1,0 +1,93 @@
+<div class="p-10">
+  <h1 class="text-center pb-10 text-4xl font-bold">ALL MEMBERS</h1>
+
+  <div class="flex justify-end">
+    <button
+      class="px-4 py-2 bg-orange-600 text-white rounded-md"
+      routerLink="/member/add"
+    >
+      Add
+    </button>
+  </div>
+
+  <!-- table-->
+
+  <div class="mt-[3%] ml-[3%]">
+    <div class="overflow-x-auto">
+      <table class="min-w-full divide-y divide-gray-200">
+        <thead class="bg-gray-500">
+          <tr>
+            <th
+              class="px-5 py-3 text-left text-xs text-white font-bold uppercase border border-white"
+            >
+              Name
+            </th>
+            <th
+              class="px-6 py-3 text-left text-xs font-bold text-white uppercase border border-white"
+            >
+              Email
+            </th>
+            <th
+              class="px-6 py-3 text-left text-xs font-bold text-white uppercase border border-white"
+            >
+              Place
+            </th>
+            <th
+              class="px-6 py-3 text-left text-xs font-bold text-white uppercase border border-white"
+            >
+              Phone
+            </th>
+            <th
+              class="px-6 py-3 text-left text-xs font-bold text-white uppercase border border-white"
+            >
+              Actions
+            </th>
+          </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200" >
+          <tr class="mt-5" *ngFor="let member of allMembers" >
+            <td class="px-6 py-4 whitespace-nowrap border border-gray-300 ">
+             {{member.name}}
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap border border-gray-300">
+              {{member.email}}
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap border border-gray-300">
+              {{member.place}}
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap border border-gray-300">
+              {{member.phone}}
+            </td>
+            <td
+              class="px-6 py-4 whitespace-nowrap border border-gray-300 cursor-pointer"
+            >
+              <i
+                class="fa-regular fa-pen-to-square text-blue-700"
+                routerLink="/member/edit/{{member._id}}"
+              ></i>
+              <i class="fa-solid fa-trash ms-4 text-red-700" (click)="delete(member._id)"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- <table class="border ">
+  <tr class=" ">
+    <th class="border w-36 border-gray-400 py-2 px-3 ">Name</th>
+    <th class="border w-36 border-gray-400 py-2 ">Email</th>
+    <th class="border w-36 border-gray-400 py-2 ">Place</th>
+    <th class="border w-36 border-gray-400 py-2 ">Phone</th>
+    
+    
+  </tr>
+  <tr class="mt-3">
+    <td class="border w-36 border-gray-400 py-2 ">January</td>
+    <td class="border w-36 border-gray-400 py-2 ">$100</td>
+  </tr>
+  <tr>
+    <td>February</td>
+    <td>$80</td>
+  </tr>
+</table> -->
+  </div>
+</div>
