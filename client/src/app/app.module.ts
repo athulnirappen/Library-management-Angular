@@ -9,6 +9,7 @@ import { AddComponent } from './add/add.component';
 import { EditComponent } from './edit/edit.component';
 import { FormsModule } from '@angular/forms';
 import { SearchPipe } from './transform/search.pipe';
+import { ReporttableComponent } from './reporttable/reporttable.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { SearchPipe } from './transform/search.pipe';
     AddComponent,
     EditComponent,
     SearchPipe,
+    ReporttableComponent,
   ],
   imports: [
     BrowserModule,

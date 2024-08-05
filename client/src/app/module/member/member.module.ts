@@ -7,6 +7,7 @@ import { DetailsComponent } from './details/details.component';
 import { AddComponent } from './add/add.component';
 import { EditComponent } from './edit/edit.component';
 import { FormsModule } from '@angular/forms';
+import { FilterPipe } from './shared/filter.pipe';
 
 
 
@@ -16,6 +17,7 @@ import { FormsModule } from '@angular/forms';
     DetailsComponent,
     AddComponent,
     EditComponent,
+    FilterPipe,
   ],
   imports: [CommonModule, MemberRoutingModule, FormsModule],
 })

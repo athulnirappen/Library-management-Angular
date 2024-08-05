@@ -14,12 +14,12 @@ const bookSchema = new mongoose.Schema({
         type: String,
         required:true
     },
-    isAssigned: {
-        type: Boolean,
-        default:false
+    numberofcopies: {
+        type:Number
     },
-    assignedname:{
-        type: String
+    
+    assignednames:{
+        type: Array
         
     }
 },{timestamps:true})

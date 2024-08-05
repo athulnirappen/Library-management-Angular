@@ -8,7 +8,8 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
-  allMembers:any=[]
+  allMembers: any = []
+  searchKey:string=''
 
   constructor(private api:ApiService) {
     

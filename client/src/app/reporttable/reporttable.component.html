@@ -1,0 +1,76 @@
+<div class="p-10">
+  <h1 class="text-center pb-10 text-4xl font-bold">REPORT TABLE</h1>
+
+  <!-- table-->
+
+  <div class="mt-[3%] ml-[3%]">
+    <div class="overflow-x-auto">
+      <table class="min-w-full divide-y divide-gray-200">
+        <thead class="bg-gray-500">
+          <tr>
+            <th
+              class="px-5 py-3 text-left text-xs text-white font-bold uppercase border border-white"
+            >
+              Book Name
+            </th>
+            <th
+              class="px-6 py-3 text-left text-xs font-bold text-white uppercase border border-white"
+            >
+              Author Name
+            </th>
+            <th
+              class="px-6 py-3 text-left text-xs font-bold text-white uppercase border border-white"
+            >
+              Assign Status
+            </th>
+             <th
+              class="px-6 py-3 text-left text-xs font-bold text-white uppercase border border-white"
+            >
+              Number of copies
+            </th>
+            <th
+              class="px-6 py-3 text-left text-xs font-bold text-white uppercase border border-white"
+            >
+              Assigned Members
+            </th>
+          </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+          <tr class="mt-5" *ngFor="let data of allData">
+            <td class="px-6 py-4 whitespace-nowrap border border-gray-300">
+              {{ data.bookname }}
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap border border-gray-300">
+              {{ data.authorname }}
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap border border-gray-300">
+              <p *ngIf="data.assignednames.length == 0" class="text-red-500">
+                Not assigned
+              </p>
+              <p *ngIf="data.assignednames.length !== 0" class="text-blue-500">
+                Assigned
+              </p>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap border border-gray-300">
+              {{data.numberofcopies}}
+            </td>
+            <td
+              class="px-6 py-4 whitespace-nowrap border border-gray-300"
+              *ngIf="data.assignednames"
+            >
+              <div class="flex flex-col">
+                <p>{{ data.assignednames }}</p>
+              </div>
+
+              <p *ngIf="data.assignednames.length == 0">No memberers</p>
+            </td>
+            <!-- <td class="px-6 py-4 whitespace-nowrap border border-gray-300" *ngIf="data.assignednames.length==0">
+              <p>no member</p>
+             
+            </td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

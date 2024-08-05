@@ -1,6 +1,16 @@
 <div class="p-10">
   <h1 class="text-center pb-10 text-4xl font-bold">ALL MEMBERS</h1>
 
+   <div class="flex justify-center items-center">
+    <input
+      type="search"
+      placeholder="Search here....."
+      class="border border-gray-500 rounded-md px-2 w-[500px] py-2"
+      name="searchKey"
+      [(ngModel)]="searchKey"
+    />
+  </div>
+
   <div class="flex justify-end">
     <button
       class="px-4 py-2 bg-orange-600 text-white rounded-md"
@@ -45,7 +55,7 @@
           </tr>
         </thead>
         <tbody class="bg-white divide-y divide-gray-200" >
-          <tr class="mt-5" *ngFor="let member of allMembers" >
+          <tr class="mt-5" *ngFor="let member of allMembers |filter:searchKey:'name'" >
             <td class="px-6 py-4 whitespace-nowrap border border-gray-300 ">
              {{member.name}}
             </td>

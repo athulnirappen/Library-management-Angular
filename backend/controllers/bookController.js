@@ -28,38 +28,51 @@ exports.getAllbooks = async (req, res) => {
 };
 
 exports.getsingleBook = async (req, res) => {
-  const {id}=req.params
+  const { id } = req.params;
   try {
-
-    const singlebook = await Book.findById({ _id: id })
+    const singlebook = await Book.findById({ _id: id });
     return res.status(200).json({
       message: "single book",
-      singlebook
-    })
-    
+      singlebook,
+    });
   } catch (error) {
     console.log(error);
     return res.status(500).json("Internal server error");
   }
-}
+};
 
 exports.editBook = async (req, res) => {
   const { id } = req.params;
-  const { bookname, bookimage, authorname, isAssigned, assignedname } =
+  const { bookname, bookimage, authorname, assignednames, numberofcopies } =
     req.body;
+
   try {
-    const editbook = await Book.findByIdAndUpdate(
-      { _id: id },
-      { bookname, bookimage, authorname, isAssigned, assignedname },
-      { new: true }
-    );
-    await editbook.save();
+    const book = await Book.findById(id);
+    if (!book) {
+      return res.status(404).json({ message: "Book not found" });
+    }
+
+    const updatedAssignedNames = book.assignednames.concat(assignednames);
+
+    book.bookname = bookname;
+    book.bookimage = bookimage;
+    book.authorname = authorname;
+    book.numberofcopies = numberofcopies;
+
+    if (numberofcopies >= updatedAssignedNames.length) {
+      book.assignednames = updatedAssignedNames;
+    } else {
+      book.assignednames = book.assignednames;
+    }
+
+    await book.save();
+
     return res.status(200).json({
-      message: "book is edited",
-      editbook,
+      message: "Book is edited",
+      book,
     });
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return res.status(500).json("Internal server error");
   }
 };
@@ -77,4 +90,3 @@ exports.deleteBook = async (req, res) => {
     return res.status(500).json("Internal server error");
   }
 };
-

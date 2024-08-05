@@ -12,8 +12,8 @@ export class AddComponent {
   constructor(private api:ApiService,private router:Router){}
 
   addbook() {
-    const { bookname, bookimage, authorname } = this.book
-    if (!bookname || !bookimage || !authorname) {
+    const { bookname, bookimage, authorname, numberofcopies } = this.book;
+    if (!bookname || !bookimage || !authorname || !numberofcopies) {
       alert('please fill the form')
       
     } else {

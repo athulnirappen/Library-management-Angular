@@ -34,27 +34,30 @@
           #authorname="ngModel"
         />
       </div>
-      <div class="flex flex-col">
-        <label for="isAssigned" class="mt-2">Book is assigned <span class="text-red-400">(optional)</span></label>
+     
+
+      <div class="flex flex-col"  *ngIf="  book.numberofcopies > book.assignednames.length">
+        <label for="assignednames" class="mt-2">Name of assigned Person </label>
         <select
-          name="isAssigned"
-          id="isAssigned"
+          name="assignednames"
+          id="assignednames"
           class="border p-2 mt-2 border-gray-300 rounded w-full"
-           [(ngModel)]="book.isAssigned"
+           [(ngModel)]="book.assignednames"
         >
-          <option value="true">true</option>
-          <option value="false">false</option>
+        
+          <option *ngFor="let member of members" value="{{member.name}}">{{member.name}}</option>
+          
         </select>
       </div>
-
-      <div class="flex flex-col">
-        <label for="assignedname" class="mt-2">Name of assigned Person <span class="text-red-400">(optional)</span></label>
+      <div class="flex flex-col"  *ngIf="  book.numberofcopies < book.assignednames.length">
+        <label for="assignednames" class="mt-2">Name of assigned Person </label>
         <select
-          name="assignedname"
-          id="assignedname"
+          name="assignednames"
+          id="assignednames"
           class="border p-2 mt-2 border-gray-300 rounded w-full"
-           [(ngModel)]="book.assignedname"
+           [(ngModel)]="book.assignednames"
         >
+        
           <option *ngFor="let member of members" value="{{member.name}}">{{member.name}}</option>
           
         </select>
